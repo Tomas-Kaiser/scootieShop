@@ -23,15 +23,20 @@
           <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
           <%= link_to "View Orders", "/orders"  %>
         <% else %>
-          <%= link_to 'Register', new_user_registration_path %>
-          <%= link_to 'Sign in', new_user_session_path %>
+          <%= link_to 'Register', "/users/new" %>
+          <%= link_to 'Log in', "/login" %>
         <% end %>
         <% if session[:login] == 1 %> 
           <%= link_to "Admin Log Out", "/logout" %>       
         <% else %>
           <%= link_to "Admin Log In", "/login" %>
         <% end %>
-        
+        <%= link_to "Search:", ""%>
+        <%= form_tag("/search", :method => "get") do %>
+        <%= label_tag(:q, "Search for:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+        <% end %>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
