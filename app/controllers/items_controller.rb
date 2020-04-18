@@ -22,9 +22,12 @@ class ItemsController < ApplicationController
   # Search products
   def search
      st = "%#{params[:q]}%"
-     @search_term = st.downcase
-     @itemsCategory = Item.where("lower(category) like ?", st)
-     @itemsTitle = Item.where("lower(title) like ?", st)
+     @search_term = st
+     @itemsCategory = Item.where("category like ?", st)
+     @itemsTitle = Item.where("title like ?", st)
+     #@search_term = st.downcase
+    #@itemsCategory = Item.where("lower(category) like ?", st)
+     #@itemsTitle = Item.where("lower(title) like ?", st)
   end
   
   # GET /items/new
